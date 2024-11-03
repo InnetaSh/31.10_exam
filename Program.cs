@@ -403,8 +403,9 @@ namespace _31._10_exam
             Console.CursorVisible = false;
             try
             {
-                while (filesDownloaded <= allFileCount)
+                while (filesDownloaded < allFileCount)
                 {
+                    await Task.Delay(100);
                     cancellationToken.ThrowIfCancellationRequested();
                     int maxProgress = 20;
                     int percent = (maxProgress / allFileCount) * filesDownloaded + 1;
@@ -426,43 +427,49 @@ namespace _31._10_exam
                     Console.SetCursorPosition(5, 7);
                     Console.Write("|");
                     Console.Write(separator);
-                    Console.Write(new string(' ', maxProgress - percent+1));
+                    Console.Write(new string(' ', maxProgress - percent + 1));
                     Console.WriteLine("|");
 
                     Console.SetCursorPosition(5, 8);
                     Console.WriteLine(new string('-', maxProgress + 2));
 
-                    await Task.Delay(100);
+                   
+                }
                     if (filesDownloaded == allFileCount)
                     {
-                       
-                        //Console.SetCursorPosition(5, 4);
-                        //Console.WriteLine(flagPause ? "     Пауза..." : "     Загрузка...");
+                    cancellationToken.ThrowIfCancellationRequested();
+                    int maxProgress = 20;
+                    int percent = (maxProgress / allFileCount) * filesDownloaded + 1;
+                    string separator = new string('*', percent);
 
-                        //if (!flagPause)
-                        //    percent = (percent + 1) % (maxProgress + 1);
-                        //await Task.Delay(500);
 
-                        //Console.SetCursorPosition(5, 5);
-                        ////Console.Write($"Загрузка... ");
+                    Console.SetCursorPosition(5, 4);
+                    Console.WriteLine(flagPause ? "     Пауза..." : "Загрузка закончена!");
 
-                        //Console.SetCursorPosition(5, 6);
-                        //Console.WriteLine(new string('-', maxProgress + 2));
+                    if (!flagPause)
+                        percent = (percent + 1) % (maxProgress + 1);
+                    await Task.Delay(500);
 
-                        //Console.SetCursorPosition(5, 7);
-                        //Console.Write("|");
-                        //Console.Write(separator);
-                        //Console.Write(new string(' ', maxProgress - percent + 1));
-                        //Console.WriteLine("|");
+                    Console.SetCursorPosition(5, 5);
+                    //Console.Write($"Загрузка... ");
 
-                        //Console.SetCursorPosition(5, 8);
-                        //Console.WriteLine(new string('-', maxProgress + 2));
-                        //await Task.Delay(500);
-                        Console.Clear();
+                    Console.SetCursorPosition(5, 6);
+                    Console.WriteLine(new string('-', maxProgress + 2));
+
+                    Console.SetCursorPosition(5, 7);
+                    Console.Write("|");
+                    Console.Write(separator);
+                    Console.Write(new string(' ', maxProgress - percent + 1));
+                    Console.WriteLine("|");
+
+                    Console.SetCursorPosition(5, 8);
+                    Console.WriteLine(new string('-', maxProgress + 2));
+                    await Task.Delay(500);
+                    //Console.Clear();
                         return;
                     }
 
-                }
+                
           
 
             }
