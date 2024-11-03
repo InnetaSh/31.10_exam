@@ -122,12 +122,21 @@ namespace _31._10_exam
 
             Console.WriteLine("Укажите путь для скачивания файлов");
 
-            FilePathDownload = "ftp://ftp.intel.com/images";
-            // FilePathDownload = Console.ReadLine();
+            //FilePathDownload = "ftp://ftp.intel.com/images";
+            FilePathDownload = Console.ReadLine();
+
+
+            Console.WriteLine("Введите логин:");
+            username = Console.ReadLine();
+            //username = "anonymous";
+
+            Console.WriteLine("Введите пароль:");
+            password = Console.ReadLine();
+            //password = "test@test.gmail.com";
 
             Console.WriteLine("Укажите путь для сохранения файлов");
-            //FilePathSave = Console.ReadLine();
-            FilePathSave = "E:\\STEP\\Сетевое программирование\\1111";
+            FilePathSave = Console.ReadLine();
+            //FilePathSave = "E:\\STEP\\Сетевое программирование\\1111";
 
             if (!Directory.Exists(FilePathSave))
             {
